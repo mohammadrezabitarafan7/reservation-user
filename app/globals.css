@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+@font-face {
+  font-family: 'iranlight';
+  src: url('fonts/IRANSansXFaNum-Regular.woff');
+}
+
+body {
+  background: #141E30;  /* fallback for old browsers */
+  background: -webkit-radial-gradient(circle, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+  background: radial-gradient(circle, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
+  
+  background-color: #0C0C0C;
+  font-family: 'iranlight', sans-serif;
+  direction: rtl;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
