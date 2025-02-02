@@ -36,7 +36,7 @@ export default function App () {
   useEffect(() => {
     // بررسی انتخاب روز و زمان
     if (selectedCard !== null && selectedTime !== null) {
-      alert(`روز: ${datesArray[selectedCard].day} - زمان: ${selectedTime}`)
+      // alert(`روز: ${datesArray[selectedCard].day} - زمان: ${selectedTime}`)
 
       updateStepData('step2', selectedTime)
     }
@@ -45,7 +45,7 @@ export default function App () {
   return (
     <div className='flex flex-col p-4 flex-1 justify-center gap-6 max-md:'>
       {/* کارت‌های روز */}
-      <div className='flex flex-wrap gap-3 justify-center max-md:grid max-md:grid-cols-3'>
+      <div className='flex flex-wrap gap-4 justify-center max-md:grid max-md:grid-cols-4'>
         {datesArray.map((date, index) => (
           <div
             key={index}
@@ -54,10 +54,11 @@ export default function App () {
             tabIndex={0}
             onClick={() => handleCardSelect(index)}
             className={cn(
-              'flex flex-col  ',
-              'hover:bg-content2 items-center justify-start',
-              'cursor-pointer rounded-xl  shadow-lg gap-2 p-1 border-2 border-default-400 ',
-              selectedCard === index && 'bg-[#FF4F00]  border-[#FF4F00]'
+              'flex flex-col items-center justify-center',
+              'cursor-pointer rounded-3xl shadow-lg gap-4 p-1 border-2 border-default-400',
+              selectedCard === index && 'bg-[#FF4F00] border-[#FF4F00]',
+              'w-[100px] h-[100px]',
+              'max-md:w-[90px] max-md:h-[90px]'
             )}
           >
             <div className='flex flex-col p-4 text-center gap-3'>
@@ -90,7 +91,7 @@ export default function App () {
               key={index}
               onClick={() => handleTimeSelect(t)}
               className={cn(
-                'bg-[#F5F9FF] px-3 py-1 rounded-md text-sm cursor-pointer',
+                'bg-white/50 backdrop-blur-2xl px-3 py-1 rounded-md text-sm cursor-pointer',
                 selectedTime === t && 'bg-[#005EF7] text-white' // زمان انتخاب‌شده را برجسته کن
               )}
             >

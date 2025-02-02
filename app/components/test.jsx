@@ -9,7 +9,7 @@ import {
   DevicePhoneMobileIcon
 } from '@heroicons/react/24/outline'
 import CheckBox from '../components/check-box'
-import { Button } from '@heroui/react'
+import { Button, Divider } from '@heroui/react'
 import Services from './services'
 import { StepContext } from '../context/step-context'
 import LoginStep from './login'
@@ -18,7 +18,7 @@ import Bread from './bread'
 const Stepper = () => {
   const steps = [
     {
-      title: 'انتخاب نوع خدمات',
+      title: 'نوع خدمات',
       icon: ScissorsIcon
     },
     {
@@ -52,31 +52,28 @@ const Stepper = () => {
   }
 
   return (
-    <div className='flex flex-col  gap-3 items-center '>
+    <div className='flex flex-col gap-3 items-center '>
       {/* Stepper UI */}
       <div
-        className='flex items-center w-[100%] justify-evenly p-3  border border-white bg-[#F5F9FF] 
-         rounded-bl-[55px] shadow-2xl  
-      rounded-br-[55px]  max-md:w-full'
+        className='flex items-center w-full justify-evenly p-3  
+             border border-white/30 bg-white/10 backdrop-blur-2xl
+             rounded-bl-[70px] rounded-br-[70px] shadow-[0_4px_30px_rgba(255,255,255,0.1)] 
+             max-md:w-full'
       >
         {steps.map((step, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0.8, y: 30 }} // انیمیشن ورودی
-            animate={{ opacity: 1, scale: 1, y: 0 }} // حالت نهایی
-            transition={{
-              duration: 0.5,
-              delay: index * 0.2, // تأخیر برای هر آیتم
-              type: 'spring'
-            }}
-            className='flex flex-col items-center gap-2  w-24 h-28 justify-center'
+            initial={{ opacity: 0, scale: 0.8, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2, type: 'spring' }}
+            className='flex flex-col items-center gap-2 w-24 h-28 justify-center'
           >
             {/* Circle */}
             <motion.div
               initial={{ scale: 0.8 }}
               animate={{ scale: currentStep === index ? 1.05 : 1 }}
               transition={{ duration: 0.3 }}
-              className={`h-12 w-12 flex items-center justify-center rounded-full ${
+              className={`h-12 w-12 flex items-center justify-center rounded-full shadow-md ${
                 currentStep >= index
                   ? 'bg-[#FF4F00] text-white'
                   : 'bg-gray-300 text-default-400'
@@ -122,23 +119,17 @@ const Stepper = () => {
       </div>
 
       {/* Buttons */}
-      
-      <div className='mt-6   w-full absolute bottom-0 rounded-tl-[55px] rounded-tr-[55px] shadow-2xl '>
-      <div className='w-full max-w-[90%] sm:max-w-[40rem] mx-auto relative '>
-          {/* Gradients */}
-          <div className='absolute inset-x-10 sm:inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#FF7133] to-transparent h-[1px] sm:h-[2px] w-3/4 blur-sm max-md:w-1/4' />
-          <div className='absolute inset-x-10 sm:inset-x-20 top-0 bg-gradient-to-r from-transparent via-[#FF7133] to-transparent h-px w-3/4 max-md:w-1/4' />
-          <div className='absolute inset-x-20 sm:inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#FF7133] to-transparent h-[3px] sm:h-[5px] w-1/4 blur-sm max-md:w-3/4' />
-          <div className='absolute inset-x-20 sm:inset-x-60 top-0 bg-gradient-to-r from-transparent via-[#FF7133] to-transparent h-px w-1/4 max-md:w-3/4' />
-        </div>
-     
-        <div className='flex flex-row justify-center gap-4 px-4 py-6 '>
+
+      <div className='mt-6 w-full  bottom-0 fixed rounded-tl-[55px] rounded-tr-[55px] shadow-2xl '>
+        <Divider className=' m-auto bg-gray-300 w-1/2' />
+
+        <div className='flex flex-row w-full justify-center gap-4 px-4 py-6  '>
           <Button
             size='lg'
-            radius='full'
+            radius='lg'
             onClick={goToPreviousStep}
             disabled={currentStep === 0}
-            className={`px-4 py-2  ${
+            className={`px-4 py-2  w-full lg:w-1/5 ${
               currentStep === 0
                 ? 'bg-gray-300   cursor-not-allowed'
                 : 'bg-[#FF4F00] text-white hover:bg-[#FF7133]'
@@ -147,10 +138,10 @@ const Stepper = () => {
             قبلی
           </Button>
           <Button
-            radius='full'
+            radius='lg'
             size='lg'
             onClick={goToNextStep}
-            className={`px-4 py-2  ${
+            className={`px-4 py-2 w-full lg:w-1/5  ${
               currentStep === steps.length - 1
                 ? 'hidden' // اگر مرحله آخر باشد، پنهان می‌شود
                 : !stepData[`step${currentStep + 1}`]

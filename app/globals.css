@@ -19,13 +19,21 @@
 }
 
 body {
-  background: #141E30;  /* fallback for old browsers */
-  background: -webkit-radial-gradient(circle, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
-  background: radial-gradient(circle, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
-  
-  
-  background-color: #0C0C0C;
+  background: -webkit-radial-gradient(circle, #243b55, #141e30);
+  /* background: radial-gradient(circle, #414345, #373A40); */
+
+  /* background: radial-gradient(circle, #151515, #243B55);  */
+  /* background: radial-gradient(circle, #243B55, #3c5c59);  */
+  /* background: linear-gradient(to top, #121113, #181b2d); */
+
+  /* background: linear-gradient(160deg, #1A2C36, #2F4F6D, #212F3C); */
+
+
+
+  background: linear-gradient(160deg, #000000, #1A2C36, #5C6B73);
+
+
+  background-color: #0c0c0c;
   font-family: 'iranlight', sans-serif;
   direction: rtl;
 }

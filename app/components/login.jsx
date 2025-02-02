@@ -1,56 +1,66 @@
 'use client'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, Input, InputOtp } from '@heroui/react'
+import { Button, InputOtp } from '@heroui/react'
 
 const LoginStep = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors }
   } = useForm()
+
   const [loading, setLoading] = useState(false)
   const [value, setValue] = useState('')
 
+  // دریافت مقدار ورودی شماره موبایل از فرم
+  const phoneNumber = watch('phone', '')
+
+  // تابع بررسی صحت شماره موبایل
+  const isValidPhoneNumber = phoneNumber.match(/^09\d{9}$/)
+
   const onSubmit = async data => {
     setLoading(true)
-    // شرط تست
-    if (data.phone === '123' && data.password === '123') {
-      // toast.success('ورود موفقیت آمیز بود!')
-      // Cookies.set('token', 'TOKEN', { expires: 2 });
+    if (data.phone === '09123456789') {
+      // ورود موفق
       setLoading(false)
     }
-  
   }
+
   return (
-    <div className='flex flex-col  '>
-      <div className='m-auto w-full  backdrop-blur-sm  rounded-md justify-center p-12 flex flex-col z-10 max-md:w-full max-md:p-6'>
-        <h1 className='text-center  text-sm mb-4 text-[#F5F9FF]'>
+    <div className='flex flex-col'>
+      <div className='m-auto w-full backdrop-blur-sm rounded-md justify-center p-12 flex flex-col z-10 max-md:w-full max-md:p-6'>
+        <h1 className='text-center text-sm mb-4 text-[#F5F9FF]'>
           لطفا شماره موبایل خود را وارد نمایید
         </h1>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className='flex flex-1 gap-3 flex-col justify-evenly'
+          className='flex flex-1 gap-3 flex-col relative justify-evenly'
         >
+          {/* فیلد شماره موبایل */}
           <input
+            maxLength={11}
             type='text'
-            className=' border-1 py-2 bg-transparent text-white w-1/3 m-auto text-end outline-none p-2 rounded-md text-[12px] max-md:w-full'
+            inputMode='numeric'
+            className='text-base border-1 py-2 bg-transparent text-white w-1/3 m-auto text-end outline-none p-2 rounded-md text-[12px] max-md:w-full'
             placeholder=' - 09 '
-            {...register('phone', { required: true })}
-            aria-invalid={errors.price ? 'true' : 'false'}
+            {...register('phone', { required: true, pattern: /^09\d{9}$/ })}
+            aria-invalid={errors.phone ? 'true' : 'false'}
           />
 
-          {errors.phone?.type === 'required' && (
-            <p className='text-[#FF4F00] text-center text-[12px] ' role='alert'>
-              لطفا شماره خود را وارد کنید
+          {/* نمایش خطا در صورت نادرست بودن شماره */}
+          {errors.phone && (
+            <p className='text-[#FF4F00] text-center text-[12px]' role='alert'>
+              شماره موبایل نامعتبر است! (باید 11 رقم باشد و با 09 شروع شود)
             </p>
           )}
 
           {loading && (
             <div className='flex flex-col items-center gap-2'>
               <InputOtp
-                dir='ltr' // جهت وارد کردن متن از چپ به راست
+                dir='ltr'
                 textAlign='left'
                 size='md'
                 length={4}
@@ -59,12 +69,14 @@ const LoginStep = () => {
               />
             </div>
           )}
+
+          {/* دکمه ورود */}
           <Button
-            color='primary'
-            className=' text-white w-1/3 mx-auto max-md:w-full'
+            className='text-white bg-[#005EF7] w-1/3 mx-auto max-md:w-full'
             type='submit'
             radius='sm'
             isLoading={loading}
+            isDisabled={!isValidPhoneNumber}
             spinner={
               <svg
                 className='animate-spin h-5 w-5 text-current'
@@ -95,4 +107,5 @@ const LoginStep = () => {
     </div>
   )
 }
+
 export default LoginStep
