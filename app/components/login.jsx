@@ -1,7 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Button, InputOtp } from '@heroui/react'
+import { Button, Divider, InputOtp } from '@heroui/react'
+import { StepContext } from '../context/step-context'
 
 const LoginStep = () => {
   const {
@@ -13,10 +14,10 @@ const LoginStep = () => {
 
   const [loading, setLoading] = useState(false)
   const [value, setValue] = useState('')
+  const { stepData } = useContext(StepContext)
 
   // دریافت مقدار ورودی شماره موبایل از فرم
   const phoneNumber = watch('phone', '')
-
   // تابع بررسی صحت شماره موبایل
   const isValidPhoneNumber = phoneNumber.match(/^09\d{9}$/)
 
@@ -25,11 +26,26 @@ const LoginStep = () => {
     if (data.phone === '09123456789') {
       // ورود موفق
       setLoading(false)
+      console.log(stepData)
     }
   }
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col  items-center'>
+      <div className='flex flex-row gap-3 justify-center shadow-xl border border-[#FF4F00] p-4 rounded-xl'>
+        <span className='text-white text-xs'>{stepData.step1}</span>
+        <Divider orientation='vertical' className='bg-white w-5 h-px my-auto' />
+        <span className='text-white text-xs'>
+          {stepData.step2.day}&nbsp;{stepData.step2.date}
+        </span>
+        <Divider orientation='vertical' className='bg-white w-5 h-px my-auto' />
+
+        <span className='text-white text-xs'>
+          {'ساعت '}
+          {stepData.step2.time}
+        </span>
+      </div>
+
       <div className='m-auto w-full backdrop-blur-sm rounded-md justify-center p-12 flex flex-col z-10 max-md:w-full max-md:p-6'>
         <h1 className='text-center text-sm mb-4 text-[#F5F9FF]'>
           لطفا شماره موبایل خود را وارد نمایید

@@ -38,7 +38,12 @@ export default function App () {
     if (selectedCard !== null && selectedTime !== null) {
       // alert(`روز: ${datesArray[selectedCard].day} - زمان: ${selectedTime}`)
 
-      updateStepData('step2', selectedTime)
+      updateStepData('step2', {
+        day: datesArray[selectedCard].day,
+        date: datesArray[selectedCard].date,
+        time:selectedTime
+
+      })
     }
   }, [selectedCard, selectedTime]) // اجرا زمانی که selectedCard یا selectedTime تغییر کند
 
@@ -91,7 +96,7 @@ export default function App () {
               key={index}
               onClick={() => handleTimeSelect(t)}
               className={cn(
-                'bg-white/50 backdrop-blur-2xl px-3 py-1 rounded-md text-sm cursor-pointer',
+                'bg-white/70 backdrop-blur-2xl px-3 py-1 rounded-md text-sm cursor-pointer',
                 selectedTime === t && 'bg-[#005EF7] text-white' // زمان انتخاب‌شده را برجسته کن
               )}
             >

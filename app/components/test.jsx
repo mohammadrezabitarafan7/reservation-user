@@ -1,5 +1,4 @@
 'use client'
-
 import { useContext, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
@@ -13,7 +12,6 @@ import { Button, Divider } from '@heroui/react'
 import Services from './services'
 import { StepContext } from '../context/step-context'
 import LoginStep from './login'
-import Bread from './bread'
 
 const Stepper = () => {
   const steps = [
@@ -32,7 +30,6 @@ const Stepper = () => {
   ]
 
   const [currentStep, setCurrentStep] = useState(0)
-
   const { stepData } = useContext(StepContext)
   const goToNextStep = () => {
     // بررسی اطلاعات مرحله جاری
@@ -131,7 +128,7 @@ const Stepper = () => {
             disabled={currentStep === 0}
             className={`px-4 py-2  w-full lg:w-1/5 ${
               currentStep === 0
-                ? 'bg-gray-300   cursor-not-allowed'
+                ? 'hidden'
                 : 'bg-[#FF4F00] text-white hover:bg-[#FF7133]'
             }`}
           >
