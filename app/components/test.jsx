@@ -32,8 +32,15 @@ const Stepper = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const { stepData } = useContext(StepContext)
   const goToNextStep = () => {
-    // بررسی اطلاعات مرحله جاری
-    if (!stepData[`step${currentStep + 1}`]) {
+    const nextStepKey = `step${currentStep + 1}`
+    const nextStepData = stepData[nextStepKey]
+
+    // بررسی مقدار فیلدهای داخلی برای `step2`
+    if (
+      !nextStepData ||
+      (typeof nextStepData === 'object' &&
+        Object.values(nextStepData).some(value => !value)) // بررسی مقدار همه فیلدها
+    ) {
       setError('لطفاً اطلاعات این مرحله را تکمیل کنید.')
       return // مانع رفتن به مرحله بعدی شوید
     }
@@ -138,14 +145,24 @@ const Stepper = () => {
             radius='lg'
             size='lg'
             onClick={goToNextStep}
-            className={`px-4 py-2 w-full lg:w-1/5  ${
+            className={`px-4 py-2 w-full lg:w-1/5 ${
               currentStep === steps.length - 1
-                ? 'hidden' // اگر مرحله آخر باشد، پنهان می‌شود
-                : !stepData[`step${currentStep + 1}`]
-                ? 'bg-gray-300  cursor-not-allowed'
+                ? 'hidden'
+                : !stepData[`step${currentStep + 1}`] ||
+                  (typeof stepData[`step${currentStep + 1}`] === 'object' &&
+                    Object.values(stepData[`step${currentStep + 1}`]).some(
+                      value => !value
+                    ))
+                ? 'bg-gray-300 cursor-not-allowed'
                 : 'bg-[#FF4F00] text-white hover:bg-[#E54500]'
             }`}
-            disabled={!stepData[`step${currentStep + 1}`]} // دکمه فقط زمانی فعال است که اطلاعات مرحله جاری وجود داشته باشد
+            disabled={
+              !stepData[`step${currentStep + 1}`] ||
+              (typeof stepData[`step${currentStep + 1}`] === 'object' &&
+                Object.values(stepData[`step${currentStep + 1}`]).some(
+                  value => !value
+                ))
+            }
           >
             بعدی
           </Button>

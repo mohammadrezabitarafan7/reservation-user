@@ -5,12 +5,12 @@ const SplashPage = ({ onEnter }) => {
   return (
     <motion.div
       transition={{ duration: 0.8, ease: 'easeInOut' }}
-      className='flex flex-col items-center justify-center h-screen bg-gradient-to-br from-[#0c0c0c]  to-[#1a1a1a]'
+      className='flex flex-col items-center justify-center h-screen bg-gradient-to-br from-[#1A2D42] via-[#1A2D42]  to-[#5C6B73]'
     >
       <div className='flex justify-center items-center'>
         {/* مستطیل شیشه‌ای */}
         <div className='flex flex-col p-14 rounded-xl '>
-          <p className='text-white text-xl mb-4 text-center'>خوش آمدید!</p>
+          <p className='text-white text-xl mb-4 text-center font-bold'>خوش آمدید!</p>
           <Image src={i3} width={300} alt='sp' />
           <button
             onClick={onEnter}

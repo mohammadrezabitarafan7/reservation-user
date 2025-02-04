@@ -60,8 +60,8 @@ const LoginStep = () => {
             maxLength={11}
             type='text'
             inputMode='numeric'
-            className='text-base border-1 py-2 bg-transparent text-white w-1/3 m-auto text-end outline-none p-2 rounded-md text-[12px] max-md:w-full'
-            placeholder=' - 09 '
+            className='text-base border-1 py-2 bg-transparent text-white w-1/3 m-auto  text-center outline-none p-2 rounded-md text-[12px] max-md:w-full'
+            placeholder='- 09'
             {...register('phone', { required: true, pattern: /^09\d{9}$/ })}
             aria-invalid={errors.phone ? 'true' : 'false'}
           />
