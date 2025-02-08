@@ -30,7 +30,7 @@ const Stepper = () => {
   ]
 
   const [currentStep, setCurrentStep] = useState(0)
-  const { stepData } = useContext(StepContext)
+  const { stepData,clearStepData } = useContext(StepContext)
   const goToNextStep = () => {
     const nextStepKey = `step${currentStep + 1}`
     const nextStepData = stepData[nextStepKey]
@@ -41,7 +41,7 @@ const Stepper = () => {
       (typeof nextStepData === 'object' &&
         Object.values(nextStepData).some(value => !value)) // بررسی مقدار همه فیلدها
     ) {
-      setError('لطفاً اطلاعات این مرحله را تکمیل کنید.')
+      alert('لطفاً اطلاعات این مرحله را تکمیل کنید.')
       return // مانع رفتن به مرحله بعدی شوید
     }
 
@@ -52,7 +52,16 @@ const Stepper = () => {
   }
 
   const goToPreviousStep = () => {
-    if (currentStep > 0) setCurrentStep(currentStep - 1)
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1)
+
+      // مشخص کردن مرحله
+      if (currentStep === 1) {
+        clearStepData('step1')
+      } else if (currentStep === 2) {
+        clearStepData('step2')
+      }
+    }
   }
 
   return (
@@ -147,7 +156,7 @@ const Stepper = () => {
             onClick={goToNextStep}
             className={`px-4 py-2 w-full lg:w-1/5 ${
               currentStep === steps.length - 1
-                ? 'hidden'
+                ? ''
                 : !stepData[`step${currentStep + 1}`] ||
                   (typeof stepData[`step${currentStep + 1}`] === 'object' &&
                     Object.values(stepData[`step${currentStep + 1}`]).some(
@@ -164,7 +173,7 @@ const Stepper = () => {
                 ))
             }
           >
-            بعدی
+            {currentStep === 2 ? 'تایید' : 'بعدی'}
           </Button>
         </div>
       </div>
