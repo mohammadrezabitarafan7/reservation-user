@@ -8,7 +8,7 @@ const Bread = () => {
 
   return (
     <div className='flex justify-center items-center p-4'>
-      <div className='inline-flex flex-row gap-3 justify-center shadow-xl border border-[#FF4F00] p-4 rounded-xl'>
+      <div className='inline-flex flex-row gap-3 justify-center shadow-xl border border-myColor p-4 rounded-xl'>
         <span className='text-white text-xs'>{stepData.step1}</span>
         <Divider orientation='vertical' className='bg-white w-5 h-px my-auto' />
         <span className='text-white text-xs'>

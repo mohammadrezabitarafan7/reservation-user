@@ -53,7 +53,7 @@ const DateTime = () => {
             size='lg'
             radius='lg'
             onClick={goToPrevStep}
-            className={`px-4 py-2 w-full lg:w-1/5 cursor-pointer bg-[#FF4F00] text-white hover:bg-[#FF7133]`}
+            className={`px-4 py-2 w-full lg:w-1/5 cursor-pointer bg-myColor text-white hover:bg-[#FF7133]`}
           >
             قبلی
           </Button>
@@ -63,7 +63,7 @@ const DateTime = () => {
             onClick={goToNextStep}
             className={`px-4 py-2 w-full lg:w-1/5 ${
               selectedTime !== null
-                ? 'bg-[#FF4F00] text-white hover:bg-[#FF7133]'
+                ? 'bg-myColor text-white hover:bg-[#FF7133]'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
             disabled={selectedTime === null}

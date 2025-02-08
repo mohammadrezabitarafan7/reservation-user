@@ -14,7 +14,7 @@ const SplashPage = ({ onEnter }) => {
           <Image src={i3} width={300} alt='sp' />
           <button
             onClick={onEnter}
-            className='px-6 py-2 bg-[#FF4F00] text-white rounded-lg text-lg transition-transform hover:scale-105'
+            className='px-6 py-2 bg-myColor text-white rounded-lg text-lg transition-transform hover:scale-105'
           >
             ورود
           </button>

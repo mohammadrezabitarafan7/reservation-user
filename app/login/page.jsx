@@ -90,7 +90,7 @@ const Login = () => {
 
               {errors.phone && (
                 <p
-                  className='text-[#FF4F00] text-center text-[12px]'
+                  className='text-myColor text-center text-[12px]'
                   role='alert'
                 >
                   شماره موبایل نامعتبر است! (باید 11 رقم باشد و با 09 شروع شود)
@@ -131,7 +131,7 @@ const Login = () => {
             size='lg'
             radius='lg'
             onClick={goToPrevStep}
-            className='px-4 py-2 w-full lg:w-1/5 cursor-pointer bg-[#FF4F00] text-white hover:bg-[#FF7133]'
+            className='px-4 py-2 w-full lg:w-1/5 cursor-pointer bg-myColor text-white hover:bg-[#FF7133]'
           >
             قبلی
           </Button>
@@ -167,7 +167,7 @@ const Login = () => {
               isDisabled={!isValidPhoneNumber}
               className={`px-4 py-2 w-full lg:w-1/5 ${
                 isValidPhoneNumber
-                  ? 'bg-[#FF4F00] text-white hover:bg-[#FF7133]'
+                  ? 'bg-myColor text-white hover:bg-[#FF7133]'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
             >
@@ -204,7 +204,7 @@ const Login = () => {
               isDisabled={value.length !== 4}
               className={`px-4 py-2 w-full lg:w-1/5 ${
                 value.length === 4
-                  ? 'bg-[#FF4F00] text-white hover:bg-[#FF7133]'
+                  ? 'bg-myColor text-white hover:bg-[#FF7133]'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
             >

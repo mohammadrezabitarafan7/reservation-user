@@ -55,7 +55,7 @@ export default function App({ sendDataToParent }) {
             className={cn(
               'flex flex-col items-center justify-center cursor-pointer',
               'rounded-3xl shadow-lg gap-2 p-2 border-2 border-default-400',
-              selectedCard === index && 'bg-[#FF4F00] border-[#FF4F00]',
+              selectedCard === index && 'bg-myColor border-myColor',
               'w-[100px] h-[100px] max-md:w-[90px] max-md:h-[90px]'
             )}
           >

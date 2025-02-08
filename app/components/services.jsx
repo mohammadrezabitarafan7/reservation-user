@@ -55,7 +55,7 @@ export default function App () {
               className={cn(
                 'flex flex-col items-center justify-center',
                 'cursor-pointer rounded-3xl shadow-lg gap-4 p-1 border-2 border-default-400',
-                selectedCard === index && 'bg-[#FF4F00] border-[#FF4F00]',
+                selectedCard === index && 'bg-myColor border-myColor',
                 'w-[100px] h-[100px]',
                 'max-md:w-[90px] max-md:h-[90px]'
               )}
@@ -91,7 +91,7 @@ export default function App () {
             onClick={goToNextStep}
             className={`px-4 py-2 w-full lg:w-1/5 ${
               selectedCard !== null
-                ? 'bg-[#FF4F00] text-white hover:bg-[#FF7133]'
+                ? 'bg-myColor text-white hover:bg-[#FF7133]'
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
             disabled={selectedCard === null}

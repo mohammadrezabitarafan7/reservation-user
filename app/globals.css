@@ -19,21 +19,19 @@
 }
 
 body {
-  background: -webkit-radial-gradient(circle, #243b55, #141e30);
+  /* background: -webkit-radial-gradient(circle, #243b55, #141e30); */
   /* background: radial-gradient(circle, #414345, #373A40); */
-
   /* background: radial-gradient(circle, #151515, #243B55);  */
   /* background: radial-gradient(circle, #243B55, #3c5c59);  */
   /* background: linear-gradient(to top, #121113, #181b2d); */
-
   /* background: linear-gradient(160deg, #1A2C36, #2F4F6D, #212F3C); */
 
 
 
-  background: linear-gradient(160deg, #1A2D42 , #1A2D42, #5C6B73);
+  /* background: linear-gradient(160deg, #1A2D42 , #1A2D42, #5C6B73); */
 
 
-  background-color: #0c0c0c;
+  background-color: #101820;
   font-family: 'iranlight', sans-serif;
   direction: rtl;
 }

@@ -33,7 +33,7 @@ const Steps = ({ currentStep }) => {
             animate={{ scale: currentStep === index ? 1.05 : 1 }}
             transition={{ duration: 0.3 }}
             className={`h-12 w-12 flex items-center justify-center rounded-full shadow-md ${
-              currentStep >= index ? 'bg-[#FF4F00] text-white' : 'bg-gray-300 text-default-400'
+              currentStep >= index ? 'bg-myColor text-white' : 'bg-gray-300 text-default-400'
             }`}
           >
             {currentStep > index ? (
@@ -49,7 +49,7 @@ const Steps = ({ currentStep }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.2 }}
             className={`text-xs text-center break-words font-bold ${
-              currentStep >= index ? 'text-[#FF4F00]' : 'text-default-400'
+              currentStep >= index ? 'text-myColor' : 'text-default-400'
             }`}
           >
             {step.title}
