@@ -16,7 +16,7 @@ const Steps = ({ currentStep }) => {
   return (
     <div
       className='flex items-center w-full justify-evenly p-3 
-         border border-white/30 bg-white/10 backdrop-blur-2xl
+         border border-white/30 bg-stepBack backdrop-blur-2xl
          rounded-bl-[70px]  rounded-br-[70px] shadow-[0_4px_30px_rgba(255,255,255,0.1)]'
     >
       {steps.map((step, index) => (
@@ -33,7 +33,7 @@ const Steps = ({ currentStep }) => {
             animate={{ scale: currentStep === index ? 1.05 : 1 }}
             transition={{ duration: 0.3 }}
             className={`h-12 w-12 flex items-center justify-center rounded-full shadow-md ${
-              currentStep >= index ? 'bg-myColor text-white' : 'bg-gray-300 text-default-400'
+              currentStep >= index ? 'bg-stepColor text-white' : 'bg-[#595959] text-default-400'
             }`}
           >
             {currentStep > index ? (
@@ -49,7 +49,7 @@ const Steps = ({ currentStep }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.2 }}
             className={`text-xs text-center break-words font-bold ${
-              currentStep >= index ? 'text-myColor' : 'text-default-400'
+              currentStep >= index ? 'text-stepColor' : 'text-default-400'
             }`}
           >
             {step.title}

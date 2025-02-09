@@ -43,7 +43,7 @@ export default function App () {
     <div className='flex flex-col items-center'>
       <div className='fixed top-0 w-full'>
         <Steps currentStep={0} />
-        <div className='flex p-4 flex-wrap gap-3 justify-center max-md:grid max-md:grid-cols-4 max-md:place-items-center'>
+        <div className='flex flex-wrap justify-center gap-3 w-full p-4'>
           {datesArray.map((date, index) => (
             <div
               key={date.key}
@@ -63,7 +63,7 @@ export default function App () {
               <span
                 className={cn(
                   'text-xs my-auto flex justify-center items-center leading-relaxed text-default-400 font-bold',
-                  selectedCard === index && 'text-white'
+                  selectedCard === index && 'text-textColor'
                 )}
               >
                 {date.label}
@@ -81,7 +81,7 @@ export default function App () {
             size='lg'
             radius='lg'
             disabled={true}
-            className={`px-4 py-2 w-full lg:w-1/5 bg-gray-300 cursor-not-allowed`}
+            className={`px-4 py-2 w-full lg:w-1/5 bg-[#626262] text-white cursor-not-allowed`}
           >
             خوش آمدید
           </Button>
@@ -91,8 +91,8 @@ export default function App () {
             onClick={goToNextStep}
             className={`px-4 py-2 w-full lg:w-1/5 ${
               selectedCard !== null
-                ? 'bg-myColor text-white hover:bg-[#FF7133]'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                ? 'bg-myColor text-textColor hover:bg-[#FF7133]'
+                : 'bg-btnColor text-default-300 cursor-not-allowed'
             }`}
             disabled={selectedCard === null}
           >

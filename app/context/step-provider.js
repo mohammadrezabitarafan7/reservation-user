@@ -31,7 +31,7 @@ const StepProvider = ({ children }) => {
         ...prevData,
         [step]: typeof data === 'object' ? { ...prevData[step], ...data } : data
       }
-      Cookies.set(COOKIE_KEY, JSON.stringify(updatedData), { expires: 900 / 86400 })
+      Cookies.set(COOKIE_KEY, JSON.stringify(updatedData), { expires: 10 / 1440 });
       return updatedData
     })
   }

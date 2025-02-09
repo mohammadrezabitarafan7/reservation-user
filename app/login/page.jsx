@@ -1,12 +1,11 @@
 'use client'
-import { Button, Divider, InputOtp } from '@heroui/react'
+import { Button, Divider, Input, InputOtp } from '@heroui/react'
 import Steps from '../components/steps'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
 import Bread from '../components/bread'
 import Cookies from 'js-cookie'
-
 
 const Login = () => {
   const router = useRouter()
@@ -26,16 +25,12 @@ const Login = () => {
   const [showOtpInput, setShowOtpInput] = useState(false)
 
   useEffect(() => {
-
-
-
     if (isPhoneConfirmed) {
       setShowOtpInput(true)
     } else {
       setShowOtpInput(false)
     }
   }, [isPhoneConfirmed])
-
 
   const goToPrevStep = () => {
     setIsPhoneConfirmed(prev => {
@@ -57,7 +52,7 @@ const Login = () => {
   }
   const confirmSms = () => {
     setLoadingOtp(false)
-    Cookies.remove("stepData")
+    Cookies.remove('stepData')
 
     //  درخواست برای  رمز
     // if (value == 1234) {
@@ -78,11 +73,14 @@ const Login = () => {
         >
           {!isPhoneConfirmed ? (
             <>
+
               <input
                 maxLength={11}
                 type='text'
                 inputMode='numeric'
-                className='text-base border-1 py-2 bg-transparent text-white w-1/3 m-auto text-center outline-none p-2 rounded-md text-[12px] max-md:w-full'
+                className='text-base border-1 
+                 py-4 bg-transparent text-white
+                  w-1/3 mx-auto text-center outline-none p-4 rounded-lg  max-md:w-full'
                 placeholder='- 09'
                 {...register('phone', { required: true, pattern: /^09\d{9}$/ })}
                 aria-invalid={errors.phone ? 'true' : 'false'}

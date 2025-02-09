@@ -64,7 +64,7 @@ const DateTime = () => {
             className={`px-4 py-2 w-full lg:w-1/5 ${
               selectedTime !== null
                 ? 'bg-myColor text-white hover:bg-[#FF7133]'
-                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-btnColor text-default-300 cursor-not-allowed'
             }`}
             disabled={selectedTime === null}
           >

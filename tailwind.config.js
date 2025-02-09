@@ -11,7 +11,12 @@ module.exports = {
     extend: {
       colors: {
         // myColor:"#FF4F00",
-        myColor:"#FF4F00",
+        // myColor:"#ec3d08",
+        myColor:"#fc5830",
+        textColor:"#ffffff",
+        stepColor:"#fc5830",
+        stepBack:"#363636",
+        btnColor:'#626262',
         background: 'var(--background)',
         foreground: 'var(--foreground)'
       }

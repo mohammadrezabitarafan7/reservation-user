@@ -60,10 +60,10 @@ export default function App({ sendDataToParent }) {
             )}
           >
             <div className="flex flex-col text-center">
-              <span className={cn('text-sm font-bold', selectedCard === index ? 'text-white' : 'text-default-400')}>
+              <span className={cn('text-sm ', selectedCard === index ? 'text-textColor' : 'text-default-400')}>
                 {date.day}
               </span>
-              <span className={cn('text-sm font-bold', selectedCard === index ? 'text-white' : 'text-default-400')}>
+              <span className={cn('text-sm', selectedCard === index ? 'text-textColor' : 'text-default-400')}>
                 {date.date}
               </span>
             </div>
@@ -80,7 +80,7 @@ export default function App({ sendDataToParent }) {
               onClick={() => handleTimeSelect(t)}
               className={cn(
                 'bg-white/70 backdrop-blur-2xl px-3 py-1 rounded-md text-sm cursor-pointer',
-                selectedTime === t && 'bg-[#005EF7] text-white'
+                selectedTime === t && 'bg-[#00668B] text-white'
               )}
             >
               <div className="flex flex-row gap-3">
