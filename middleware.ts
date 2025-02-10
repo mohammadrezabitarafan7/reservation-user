@@ -9,7 +9,7 @@ export function middleware(req: NextRequest) {
   const cookie = req.cookies.get(COOKIE_KEY)
 
   // مسیرهایی که نیاز به احراز هویت دارند
-  const protectedRoutes = ['/time', '/login']
+  const protectedRoutes = ['/time', '/login','/confirm']
 
   if (protectedRoutes.includes(req.nextUrl.pathname)) {
     if (!cookie) {
@@ -23,5 +23,5 @@ export function middleware(req: NextRequest) {
 
 // اعمال میدلور فقط روی صفحات خاص
 export const config = {
-  matcher: ['/time', '/login'], // فقط روی این صفحات اجرا شود
+  matcher: ['/time', '/login','/confirm'], // فقط روی این صفحات اجرا شود
 }

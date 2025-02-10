@@ -17,7 +17,6 @@
   font-family: 'iranlight';
   src: url('fonts/IRANSansXFaNum-Regular.woff');
 }
-
 body {
   /* background: -webkit-radial-gradient(circle, #243b55, #141e30); */
   /* background: radial-gradient(circle, #414345, #373A40); */
@@ -25,17 +24,11 @@ body {
   /* background: radial-gradient(circle, #243B55, #3c5c59);  */
   /* background: linear-gradient(to top, #121113, #181b2d); */
   /* background: linear-gradient(160deg, #1A2C36, #2F4F6D, #212F3C); */
-
-
-
   /* background: linear-gradient(160deg, #1A2D42 , #1A2D42, #5C6B73); */
-
-
   background-color: #0f0f0f;
   font-family: 'iranlight', sans-serif;
   direction: rtl;
 }
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

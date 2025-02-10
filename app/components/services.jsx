@@ -3,7 +3,7 @@ import { cn } from '@heroui/react'
 import { StepContext } from '../context/step-context'
 import Steps from './steps.jsx'
 import { Button, Divider } from '@heroui/react'
-import { useRouter } from 'next/navigation'
+import useNavigation from '../hooks/useNavigation'
 import Loading from './loading'
 
 export const datesArray = [
@@ -18,8 +18,9 @@ export const datesArray = [
 export default function App () {
   const { updateStepData } = useContext(StepContext)
   const [selectedCard, setSelectedCard] = useState(null)
-  const router = useRouter()
-  const[loading,setLoading]=useState(true)
+  const { goTo } = useNavigation()
+  const [loading, setLoading] = useState(true)
+  const [loadingBtn, setLoadingBtn] = useState(false)
 
   const handleCardSelect = index => {
     setSelectedCard(index)
@@ -33,9 +34,9 @@ export default function App () {
 
   const goToNextStep = () => {
     if (selectedCard !== null) {
+      setLoadingBtn(true)
       updateStepData('step1', datesArray[selectedCard].label)
-      alert(datesArray[selectedCard].label)
-      router.push('/time')
+      goTo('/time')
     }
   }
 
@@ -72,7 +73,7 @@ export default function App () {
           ))}
         </div>
       </div>
-  
+
       {/* دکمه‌ها */}
       <div className='mt-6 w-full bottom-0 fixed rounded-tl-[55px] rounded-tr-[55px] shadow-2xl'>
         <Divider className='m-auto bg-gray-300 w-1/2' />
@@ -86,6 +87,7 @@ export default function App () {
             خوش آمدید
           </Button>
           <Button
+            isLoading={loadingBtn}
             radius='lg'
             size='lg'
             onClick={goToNextStep}
@@ -103,8 +105,5 @@ export default function App () {
     </div>
   ) : (
     <Loading />
-  );
-  
-  
-  
+  )
 }

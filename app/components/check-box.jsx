@@ -6,6 +6,7 @@ export default function App({ sendDataToParent }) {
   const [selectedCard, setSelectedCard] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
 
+
   // آرایه روزها و تاریخ‌ها
   const datesArray = [
     { day: 'شنبه', date: '11/11' },

@@ -59,5 +59,4 @@ const Steps = ({ currentStep }) => {
     </div>
   )
 }
-
 export default Steps

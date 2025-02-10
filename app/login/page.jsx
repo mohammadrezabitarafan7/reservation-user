@@ -1,14 +1,11 @@
 'use client'
 import { Button, Divider, Input, InputOtp } from '@heroui/react'
 import Steps from '../components/steps'
-import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { useState, useEffect } from 'react'
 import Bread from '../components/bread'
-import Cookies from 'js-cookie'
-
+import useNavigation from '../hooks/useNavigation'
 const Login = () => {
-  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -23,7 +20,7 @@ const Login = () => {
   const isValidPhoneNumber = phoneNumber.match(/^09\d{9}$/)
   const [value, setValue] = useState('')
   const [showOtpInput, setShowOtpInput] = useState(false)
-
+  const { goTo } = useNavigation()
   useEffect(() => {
     if (isPhoneConfirmed) {
       setShowOtpInput(true)
@@ -35,7 +32,7 @@ const Login = () => {
   const goToPrevStep = () => {
     setIsPhoneConfirmed(prev => {
       if (!prev) {
-        router.replace('/time')
+        goTo('/time')
       }
       return !prev
     })
@@ -51,9 +48,8 @@ const Login = () => {
     setLoading(false)
   }
   const confirmSms = () => {
-    setLoadingOtp(false)
-    Cookies.remove('stepData')
-
+    setLoadingOtp(true)
+    goTo('/confirm')
     //  درخواست برای  رمز
     // if (value == 1234) {
     //   alert('صحیح')
@@ -73,7 +69,6 @@ const Login = () => {
         >
           {!isPhoneConfirmed ? (
             <>
-
               <input
                 maxLength={11}
                 type='text'

@@ -3,16 +3,19 @@ import { Button, Divider } from '@heroui/react'
 import Steps from '../components/steps'
 import { useContext, useState } from 'react'
 import CheckBox from '../components/check-box'
-import { useRouter } from 'next/navigation'
+import useNavigation from '../hooks/useNavigation'
+
 import { StepContext } from '../context/step-context'
 
 const DateTime = () => {
   const [selectedDay, setSelectedDay] = useState(null)
   const [selectedTime, setSelectedTime] = useState(null)
-  const router = useRouter()
+  const [loadingBtn, setLoadingBtn] = useState(false)
+
+  const { goTo } = useNavigation()
   const { updateStepData } = useContext(StepContext)
 
-  // دریافت داده‌ها از کامپوننت کودک (CheckBox)
+  // دریافت داده‌ها از کامپوننت  (CheckBox)
   const handleDataFromChild = (day, time) => {
     setSelectedDay(day)
     setSelectedTime(time)
@@ -20,22 +23,23 @@ const DateTime = () => {
 
   // رفتن به مرحله بعدی
   const goToNextStep = () => {
-    alert(
-      `${selectedDay?.date || 'روز انتخاب نشده'} - ${
-        selectedTime || 'زمان انتخاب نشده'
-      }`
-    )
+    // alert(
+    //   `${selectedDay?.date || 'روز انتخاب نشده'} - ${
+    //     selectedTime || 'زمان انتخاب نشده'
+    //   }`
+    // )
+    setLoadingBtn(true)
     updateStepData('step2', {
       day: selectedDay.day,
       date: selectedDay.date,
       time: selectedTime
     })
-    router.replace('/login')
+    goTo('/login')
   }
 
   // رفتن به مرحله قبلی
   const goToPrevStep = () => {
-    router.replace('/')
+    goTo('/')
   }
 
   return (
@@ -60,6 +64,7 @@ const DateTime = () => {
           <Button
             radius='lg'
             size='lg'
+            isLoading={loadingBtn}
             onClick={goToNextStep}
             className={`px-4 py-2 w-full lg:w-1/5 ${
               selectedTime !== null
