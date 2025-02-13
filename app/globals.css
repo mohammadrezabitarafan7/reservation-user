@@ -17,6 +17,10 @@
   font-family: 'iranlight';
   src: url('fonts/IRANSansXFaNum-Regular.woff');
 }
+@font-face {
+  font-family: 'myfont';
+  src: url('fonts/logofont.ttf');
+}
 body {
   /* background: -webkit-radial-gradient(circle, #243b55, #141e30); */
   /* background: radial-gradient(circle, #414345, #373A40); */

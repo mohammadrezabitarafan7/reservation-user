@@ -4,6 +4,8 @@ import Bread from '../components/bread'
 import useNavigation from '../hooks/useNavigation'
 import { useContext } from 'react'
 import { StepContext } from '../context/step-context'
+import logo from '../public/justlogo.png'
+import Image from 'next/image'
 
 const Confirm = () => {
   const { goTo } = useNavigation()
@@ -13,7 +15,8 @@ const Confirm = () => {
     goTo('/')
   }
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center overflow-hidden'>
+    <div className='min-h-screen flex flex-col  gap-3 items-center justify-center overflow-hidden'>
+      <Image className='p-4' src={logo} width={100} />
       <span className='text-white text-xs font-bold'>وقت شما در تاریخ :</span>
       <Bread />
       <span className='text-white text-xs font-bold'>ثبت شد.</span>

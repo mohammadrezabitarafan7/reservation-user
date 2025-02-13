@@ -1,4 +1,5 @@
-const { heroui } = require("@heroui/react")
+const { heroui } = require("@heroui/react");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -10,17 +11,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // myColor:"#FF4F00",
-        // myColor:"#ec3d08",
-        myColor:"#fc5830",
-        textColor:"#ffffff",
-        stepColor:"#fc5830",
-        stepBack:"#363636",
-        btnColor:'#626262',
+        myColor: "#fc5830",
+        textColor: "#ffffff",
+        stepColor: "#fc5830",
+        stepBack: "#363636",
+        btnColor: '#626262',
         background: 'var(--background)',
         foreground: 'var(--foreground)'
+      },
+      fontFamily: {
+        myfont: ["myfont"],
       }
     }
   },
   plugins: [heroui()]
-}
+};
